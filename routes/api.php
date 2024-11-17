@@ -22,7 +22,6 @@ Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
 
 // Routes for Students (Requires Authentication)
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/students', [StudentController::class, 'store']);       // Create student
     Route::put('/students/{id}', [StudentController::class, 'update']);  // Update student
     Route::get('/students', [StudentController::class, 'index']);        // Fetch all students
     Route::get('/students/{id}', [StudentController::class, 'show']);    // Fetch single student
@@ -47,4 +46,4 @@ Route::get('/teachers/{id}', [TeacherController::class, 'show']);        // Fetc
 Route::get('/courses', [CourseController::class, 'index']);              // Fetch all courses
 Route::get('/courses/{id}', [CourseController::class, 'show']);          // Fetch single course
 
-
+Route::post('/students', [StudentController::class, 'store'])->name('students.store');       // Create student

@@ -20,10 +20,10 @@ class StudentController extends Controller
     /**
      * Create a new student.
      */
-    public function store(CreateStudentRequest $request): JsonResponse
+    public function store(CreateStudentRequest $request): \Illuminate\Http\RedirectResponse
     {
         $student = $this->studentRepository->create($request->validated());
-        return response()->json(['student' => $student], 201);
+        return redirect()->route('student-registration')->with('success', 'Student registered successfully!');
     }
 
     public function update(UpdateStudentRequest $request, int $id): JsonResponse
@@ -39,7 +39,7 @@ class StudentController extends Controller
     public function index(): JsonResponse
     {
         $students = $this->studentRepository->findAll();
-        return response()->json(['students' => $students], 200);
+        return response()->json($students, 200);
     }
 
     /**

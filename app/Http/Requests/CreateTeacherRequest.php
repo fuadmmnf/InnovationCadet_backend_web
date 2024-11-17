@@ -23,7 +23,7 @@ class CreateTeacherRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:1024',
+            'image' => 'sometimes|image|mimes:jpg,jpeg,png,gif|max:1024',
             'designation' => 'required|string|max:255',
             'course' => 'required|string|max:255',
         ];

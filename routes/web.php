@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('/about', [IndexController::class, 'about'])->name('about');
+Route::get('/contact-us', [IndexController::class, 'contactUs'])->name('contact-us');
+Route::get('/teachers', [IndexController::class, 'teachers'])->name('teachers');
+Route::get('/courses', [IndexController::class, 'courses'])->name('courses');
+Route::get('/student-registration', [IndexController::class, 'studentRegistration'])->name('student-registration');

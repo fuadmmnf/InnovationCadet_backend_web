@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Authentication Routes
+Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
+
+// Routes for Students (Requires Authentication)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/students', [StudentController::class, 'store']);       // Create student
+    Route::put('/students/{id}', [StudentController::class, 'update']);  // Update student
+    Route::get('/students', [StudentController::class, 'index']);        // Fetch all students
+    Route::get('/students/{id}', [StudentController::class, 'show']);    // Fetch single student
+
+    Route::post('/teachers', [TeacherController::class, 'store']);       // Create teacher
+    Route::post('/teachers/{id}', [TeacherController::class, 'update']);  // Update teacher
+    Route::delete('/teachers/{id}', [TeacherController::class, 'destroy']);
+
+
+    Route::post('/courses', [CourseController::class, 'store']);         // Create course
+    Route::post('/courses/{id}', [CourseController::class, 'update']);    // Update course
+    Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+
 });
+
+// Public Routes for Teachers (No Authentication Required)
+Route::get('/teachers', [TeacherController::class, 'index']);            // Fetch all teachers
+Route::get('/teachers/{id}', [TeacherController::class, 'show']);        // Fetch single teacher
+
+
+// Public Routes for Courses (No Authentication Required)
+Route::get('/courses', [CourseController::class, 'index']);              // Fetch all courses
+Route::get('/courses/{id}', [CourseController::class, 'show']);          // Fetch single course
+
+

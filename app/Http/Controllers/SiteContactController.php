@@ -23,7 +23,7 @@ class SiteContactController extends Controller
         $siteContact = $this->siteContactRepository->fetch();
 
         if ($siteContact) {
-            return response()->json(['site_contact' => $siteContact], 200);
+            return response()->json($siteContact, 200);
         } else {
             return response()->json(['message' => 'No site contact information found.'], 404);
         }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteContactController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\CourseController;
 */
 
 // Authentication Routes
-Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login']);
 
 // Routes for Students (Requires Authentication)
 Route::middleware('auth:sanctum')->group(function () {
@@ -37,6 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
 
     Route::post('/site-contact', [SiteContactController::class, 'update']); // Update site contact info
+
+    Route::post('/logout', [UserController::class, 'logout']);
 });
 
 // Public Routes for Teachers (No Authentication Required)

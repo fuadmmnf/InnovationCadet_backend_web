@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- Start Team Section -->
-    <section>
+    <section class="mt-5">
         <div class="td_height_112 td_height_lg_75"></div>
         <div class="container">
             <div class="td_section_heading td_style_1 text-center wow fadeInUp" data-wow-duration="1s"

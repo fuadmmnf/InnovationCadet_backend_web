@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -26,5 +27,13 @@ class UserRepository
         }
 
         return $user->createToken('auth-token')->plainTextToken;
+    }
+
+    public function logout(): void
+    {
+        $user = Auth::user();
+        if ($user) {
+            $user->currentAccessToken()->delete();
+        }
     }
 }

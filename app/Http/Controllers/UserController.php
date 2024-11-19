@@ -25,4 +25,11 @@ class UserController extends Controller
         $token = $this->userRepository->login($request->email, $request->password);
         return response()->json(['token' => $token], 200);
     }
+
+    public function logout(Request $request)
+    {
+        $this->userRepository->logout();
+
+        return response()->json(['message' => 'Logged out successfully'], 200);
+    }
 }

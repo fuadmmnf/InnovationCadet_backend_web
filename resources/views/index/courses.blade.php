@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Start Popular Courses Section -->
-    <section class="td_gray_bg_7 td_shape_section_3">
+    <section class="td_gray_bg_7 td_shape_section_3 mt-5">
         <div class="td_shape td_shape_position_1">
             <img src="{{ asset('assets/img/home_4/course_shape_1.svg') }}" alt="">
         </div>

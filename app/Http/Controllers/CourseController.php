@@ -47,11 +47,9 @@ class CourseController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $data['image'] =ImageHandler::uploadImage($request->file('image'), 'courses');
+            $data['image'] = ImageHandler::uploadImage($request->file('image'), 'courses');
         }
-
         $course = $this->courseRepository->update($id, $data);
-
         if ($course) {
             return response()->json(['course' => $course], 200);
         } else {
@@ -61,7 +59,7 @@ class CourseController extends Controller
 
     public function index(): JsonResponse
     {
-        $courses= $this->courseRepository->findAll();
+        $courses = $this->courseRepository->findAll();
         return response()->json($courses, 200);
     }
 

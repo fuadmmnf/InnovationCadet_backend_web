@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SiteContactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -40,6 +41,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/site-contact', [SiteContactController::class, 'update']); // Update site contact info
 
     Route::post('/logout', [UserController::class, 'logout']);
+
+    Route::post('/faqs', [FaqController::class, 'store']); // Add FAQ
+    Route::get('/faqs/{faq_id}', [FaqController::class, 'show']); // Read Single FAQ
+    Route::put('/faqs/{faq_id}', [FaqController::class, 'update']); // Update FAQ
+    Route::delete('/faqs/{faq_id}', [FaqController::class, 'destroy']); // Delete FAQ
 });
 
 // Public Routes for Teachers (No Authentication Required)
@@ -55,3 +61,4 @@ Route::post('/students', [StudentController::class, 'store'])->name('students.st
 
 Route::get('/site-contact', [SiteContactController::class, 'fetch']); // Fetch site contact info
 
+Route::get('/faqs', [FaqController::class, 'index']);

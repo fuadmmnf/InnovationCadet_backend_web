@@ -330,74 +330,30 @@
                 <div class="col-xl-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                     <div class="td_section_heading td_style_1">
                         <p class="td_section_subtitle_up td_fs_18 td_semibold td_spacing_1 td_mb_10 text-uppercase td_accent_color">
-                            FREQUENTLY ASKED QUESTIONS</p>
+                            FREQUENTLY ASKED QUESTIONS
+                        </p>
                         <h2 class="td_section_title td_fs_48 mb-0">We are The Best Kids School in City</h2>
                     </div>
                     <div class="td_height_50 td_height_lg_50"></div>
                     <div class="td_accordians td_style_1 td_type_1">
-                        <div class="td_accordian active">
-                            <div class="td_accordian_head">
-                                <h2 class="td_accordian_title td_fs_20 td_medium">How age Of Pre-School?</h2>
-                                <span class="td_accordian_toggle">
-                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.355 9L7 3.43725L1.645 9L0 7.28745L7 -9.53674e-07L14 7.28745L12.355 9Z" fill="white"/>
-                </svg>
-              </span>
-                            </div>
-                            <div class="td_accordian_body">
-                                <p>AIndignation and dislike men who are so beguiled and demoralized by the charms of
-                                    pleasure of the moment, so blinded by desire, that they cannot foresee the pain and
-                                    trouble </p>
-                            </div>
-                        </div><!-- .td_accordian -->
-                        <div class="td_accordian">
-                            <div class="td_accordian_head">
-                                <h2 class="td_accordian_title td_fs_20 td_medium">How can Admit Nursery For Child Care
-                                    baby?</h2>
-                                <span class="td_accordian_toggle">
-                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.355 9L7 3.43725L1.645 9L0 7.28745L7 -9.53674e-07L14 7.28745L12.355 9Z" fill="white"/>
-                </svg>
-              </span>
-                            </div>
-                            <div class="td_accordian_body">
-                                <p>AIndignation and dislike men who are so beguiled and demoralized by the charms of
-                                    pleasure of the moment, so blinded by desire, that they cannot foresee the pain and
-                                    trouble </p>
-                            </div>
-                        </div><!-- .td_accordian -->
-                        <div class="td_accordian">
-                            <div class="td_accordian_head">
-                                <h2 class="td_accordian_title td_fs_20 td_medium">How can Admit Nursery For Child Care
-                                    baby?</h2>
-                                <span class="td_accordian_toggle">
-                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.355 9L7 3.43725L1.645 9L0 7.28745L7 -9.53674e-07L14 7.28745L12.355 9Z" fill="white"/>
-                </svg>
-              </span>
-                            </div>
-                            <div class="td_accordian_body">
-                                <p>AIndignation and dislike men who are so beguiled and demoralized by the charms of
-                                    pleasure of the moment, so blinded by desire, that they cannot foresee the pain and
-                                    trouble </p>
-                            </div>
-                        </div><!-- .td_accordian -->
-                        <div class="td_accordian">
-                            <div class="td_accordian_head">
-                                <h2 class="td_accordian_title td_fs_20 td_medium">How can Admit Nursery For Child Care
-                                    baby?</h2>
-                                <span class="td_accordian_toggle">
-                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.355 9L7 3.43725L1.645 9L0 7.28745L7 -9.53674e-07L14 7.28745L12.355 9Z" fill="white"/>
-                </svg>
-              </span>
-                            </div>
-                            <div class="td_accordian_body">
-                                <p>AIndignation and dislike men who are so beguiled and demoralized by the charms of
-                                    pleasure of the moment, so blinded by desire, that they cannot foresee the pain and
-                                    trouble </p>
-                            </div>
-                        </div><!-- .td_accordian -->
+                        @foreach ($faqs as $faq)
+                            <div class="td_accordian {{ $loop->first ? 'active' : '' }}">
+                                <div class="td_accordian_head">
+                                    <h2 class="td_accordian_title td_fs_20 td_medium">{{ $faq->question }}</h2>
+                                    <span class="td_accordian_toggle">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.355 9L7 3.43725L1.645 9L0 7.28745L7 -9.53674e-07L14 7.28745L12.355 9Z"
+                                            fill="white"/>
+                                    </svg>
+                                </span>
+                                </div>
+                                <div class="td_accordian_body">
+                                    <p>{{ $faq->answer }}</p>
+                                </div>
+                            </div><!-- .td_accordian -->
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xl-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SiteContactController;
 use App\Http\Controllers\UserController;
@@ -46,6 +47,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/faqs/{faq_id}', [FaqController::class, 'show']); // Read Single FAQ
     Route::put('/faqs/{faq_id}', [FaqController::class, 'update']); // Update FAQ
     Route::delete('/faqs/{faq_id}', [FaqController::class, 'destroy']); // Delete FAQ
+
+    Route::post('/customer-reviews', [CustomerReviewController::class, 'store']);
+    Route::post('/customer-reviews/{id}', [CustomerReviewController::class, 'update']);
+    Route::delete('/customer-reviews/{id}', [CustomerReviewController::class, 'destroy']);
+
 });
 
 // Public Routes for Teachers (No Authentication Required)
@@ -62,3 +68,4 @@ Route::post('/students', [StudentController::class, 'store'])->name('students.st
 Route::get('/site-contact', [SiteContactController::class, 'fetch']); // Fetch site contact info
 
 Route::get('/faqs', [FaqController::class, 'index']);
+Route::get('/customer-reviews', [CustomerReviewController::class, 'index']);

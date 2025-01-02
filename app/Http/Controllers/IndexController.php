@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\CourseRepository;
+use App\Repositories\CustomerReviewRepository;
 use App\Repositories\FaqRepository;
 use App\Repositories\TeacherRepository;
 use Illuminate\Http\Request;
@@ -12,13 +13,15 @@ class IndexController extends Controller
     protected $courseRepository;
     protected $teacherRepository;
     protected $faqRepository;
+    protected $customerReviewRepository;
 
     // Constructor to inject the repositories
-    public function __construct(CourseRepository $courseRepository, TeacherRepository $teacherRepository, FaqRepository $faqRepository)
+    public function __construct(CourseRepository $courseRepository, TeacherRepository $teacherRepository, FaqRepository $faqRepository, CustomerReviewRepository $customerReviewRepository)
     {
         $this->courseRepository = $courseRepository;
         $this->teacherRepository = $teacherRepository;
         $this->faqRepository = $faqRepository;
+        $this->customerReviewRepository = $customerReviewRepository;
     }
 
     public function home()
@@ -27,10 +30,12 @@ class IndexController extends Controller
         $courses = $this->courseRepository->findAll();
         $teachers = $this->teacherRepository->findAll();
         $faqs = $this->faqRepository->index();
+        $customerReviews = $this->customerReviewRepository->findAll();
         return view('index.home', [
             'courses' => $courses,
             'teachers' => $teachers,
-            'faqs' => $faqs
+            'faqs' => $faqs,
+            'customerReviews' => $customerReviews
         ]);
     }
 
